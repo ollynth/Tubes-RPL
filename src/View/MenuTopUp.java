@@ -27,7 +27,7 @@ public class MenuTopUp {
         f.setLayout(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel intro = new JLabel("Dompet " + currUser.getUser_name() + ".");
+        JLabel intro = new JLabel("Dompet " + currUser.getName() + ".");
         intro.setFont(font);
         intro.setBounds(30, 70, 400, 30);
         f.add(intro);
@@ -70,9 +70,9 @@ public class MenuTopUp {
         JButton backButton = new JButton("Kembali");
         backButton.setBounds(10, 10, 85, 30);
         backButton.addActionListener(e -> {
-            if (currUser.getUser_role().equalsIgnoreCase("DRIVER")) {
+            if (currUser.getRole().equalsIgnoreCase("DRIVER")) {
                 new MainMenuDriver(id);
-            } else if (currUser.getUser_role().equalsIgnoreCase("PASSANGER")) {
+            } else if (currUser.getRole().equalsIgnoreCase("PASSANGER")) {
                 new MainMenuPassanger(id);
             }
             f.dispose();
@@ -119,9 +119,9 @@ public class MenuTopUp {
                             Controller.getInstance().updateJoPay(id, currSaldo + saldoTambahan);
                             JOptionPane.showMessageDialog(f, "Top Up berhasil dilakukan!", "WARNING",
                                     JOptionPane.DEFAULT_OPTION);
-                            if (currUser.getUser_role().equalsIgnoreCase("DRIVER")) {
+                            if (currUser.getRole().equalsIgnoreCase("DRIVER")) {
                                 new MainMenuDriver(id);
-                            } else if (currUser.getUser_role().equalsIgnoreCase("PASSANGER")) {
+                            } else if (currUser.getRole().equalsIgnoreCase("PASSANGER")) {
                                 new MainMenuPassanger(id);
                             }
                             f.dispose();

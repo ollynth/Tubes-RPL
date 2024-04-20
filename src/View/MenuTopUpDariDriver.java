@@ -75,9 +75,9 @@ public class MenuTopUpDariDriver {
         JButton backButton = new JButton("Kembali");
         backButton.setBounds(10, 10, 85, 30);
         backButton.addActionListener(e -> {
-            if (currUser.getUser_role().equalsIgnoreCase("DRIVER")) {
+            if (currUser.getRole().equalsIgnoreCase("DRIVER")) {
                 new MainMenuDriver(id);
-            } else if (currUser.getUser_role().equalsIgnoreCase("PASSANGER")) {
+            } else if (currUser.getRole().equalsIgnoreCase("PASSANGER")) {
                 new MainMenuPassanger(id);
             }
             f.dispose();
