@@ -30,7 +30,7 @@ public class TarikDana {
         f.setLayout(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel intro = new JLabel("Dompet " + driver.getUser_name() + ".");
+        JLabel intro = new JLabel("Dompet " + driver.getName() + ".");
         intro.setFont(font);
         intro.setBounds(30, 70, 400, 30);
         f.add(intro);
