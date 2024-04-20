@@ -503,11 +503,11 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Order orders = new Order();
-                orders.setOrder_id(rs.getInt("order_id"));
-                orders.setOrder_destination(rs.getString("order_destination"));
-                orders.setOrder_date(rs.getDate("order_date"));
-                orders.setOrder_final_price(rs.getFloat("order_final_price"));
-                orders.setOrder_status(getEnum(rs.getString("order_status")));
+                orders.setId(rs.getInt("order_id"));
+                orders.setDestination(rs.getString("order_destination"));
+                orders.setDate(rs.getDate("Date"));
+                orders.setPrice(rs.getFloat("order_final_price"));
+                orders.setStatus(getEnum(rs.getString("order_status")));
                 listOrder.add(orders);
             }
         } catch (SQLException e) {
