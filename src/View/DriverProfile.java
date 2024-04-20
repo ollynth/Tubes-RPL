@@ -28,7 +28,7 @@ public class DriverProfile {
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel intro = new JLabel("Halo, " + driver.getUser_name() + "!");
+        JLabel intro = new JLabel("Halo, " + driver.getName() + "!");
         Font font = new Font("Courier", Font.BOLD, 20);
         JLabel intro2 = new JLabel("Mau update apa nih?");
         Font font2 = new Font("Courier", Font.PLAIN, 16);
@@ -46,7 +46,7 @@ public class DriverProfile {
         Font fontLabel = new Font("Courier", Font.BOLD, 16);
 
         JLabel labelNama = new JLabel("Username ");
-        JTextField textNama = new JTextField(driver.getUser_name());
+        JTextField textNama = new JTextField(driver.getName());
         labelNama.setFont(fontLabel);
         labelNama.setBounds(30, 160, 100, 30);
         textNama.setBounds(260, 160, 200, 30);
@@ -97,7 +97,7 @@ public class DriverProfile {
         buttonGanti.setBounds(40, 480, 400, 30);
         buttonGanti.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GantiPassword(driver.getId(), driver.getUser_pass());
+                new GantiPassword(driver.getId(), driver.getPassword());
                 f.dispose();
             }
         });

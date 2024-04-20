@@ -80,7 +80,7 @@ public class ListVerifikasiDriver {
 
             promoPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1, true));
 
-            JLabel username = new JLabel("Username: " + wait.getUser_name());
+            JLabel username = new JLabel("Username: " + wait.getName());
             username.setFont(font4);
             username.setBounds(10, 5, 200, 25);
             username.setBorder(null);
@@ -112,11 +112,11 @@ public class ListVerifikasiDriver {
                 public void actionPerformed(ActionEvent e) {
                     int choice = JOptionPane.showConfirmDialog(null, "Verifikasi?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                     if (choice == JOptionPane.YES_OPTION) {
-                        boolean succeed = Controller.getInstance().inputUserDataToDB(wait.getUser_name(), wait.getUser_pass(), "Driver");
+                        boolean succeed = Controller.getInstance().inputUserDataToDB(wait.getName(), wait.getPassword(), "Driver");
                         if (succeed) {
-                            int id = Controller.getInstance().getIDUser(wait.getUser_name());
+                            int id = Controller.getInstance().getIDUser(wait.getName());
                             boolean succeedDriver = Controller.getInstance().inputDriverDataToDB(id, wait.getPhonNum(), wait.getVehicle_name(), wait.getVehicle_type(), wait.getVehicle_plate());
-                            boolean succeedDelete = Controller.getInstance().deleteWaitingDriver(wait.getUser_name());
+                            boolean succeedDelete = Controller.getInstance().deleteWaitingDriver(wait.getName());
                             if (succeedDriver && succeedDelete) {
                                 JOptionPane.showMessageDialog(f, "Data berhasil diverify");
                                 new ListVerifikasiDriver();
