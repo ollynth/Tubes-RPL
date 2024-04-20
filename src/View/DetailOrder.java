@@ -37,11 +37,11 @@ public class DetailOrder {
         intro.setBounds(30, 70, 400, 30);
 
         String message = "";
-        if (listOrder.get(listOrder.size() - 1).getOrder_status() == OrderStatusEnum.FINISHED) {
+        if (listOrder.get(listOrder.size() - 1).getStatus() == OrderStatusEnum.FINISHED) {
             message = "Sudah sampai tujuan.";
-        } else if (listOrder.get(0).getOrder_status() == OrderStatusEnum.CANCEL) {
+        } else if (listOrder.get(0).getStatus() == OrderStatusEnum.CANCEL) {
             message = "Sudah di cancel.";
-        } else if (listOrder.get(0).getOrder_status() == OrderStatusEnum.NOW) {
+        } else if (listOrder.get(0).getStatus() == OrderStatusEnum.NOW) {
             message = "Sedang dalam perjalanan";
         }
 
@@ -63,11 +63,11 @@ public class DetailOrder {
         idForShow.setFont(font4);
         idForShow.setBounds(420, 150, 300, 30);
 
-        JLabel asal = new JLabel(listOrder.get(listOrder.size() - 1).getOrder_pickup() + " menuju");
+        JLabel asal = new JLabel(listOrder.get(listOrder.size() - 1).getPickup() + " menuju");
         asal.setFont(font4);
         asal.setBounds(340, 95, 100, 30);
 
-        JLabel destination = new JLabel(listOrder.get(listOrder.size() - 1).getOrder_destination());
+        JLabel destination = new JLabel(listOrder.get(listOrder.size() - 1).getDestination());
         destination.setFont(font4);
         destination.setBounds(420, 95, 40, 30);
 
@@ -91,7 +91,7 @@ public class DetailOrder {
         total.setFont(font4);
         total.setBounds(30, 490, 300, 30);
 
-        JLabel payRawVal = new JLabel("Rp. " + listOrder.get(listOrder.size() - 1).getOrder_price());
+        JLabel payRawVal = new JLabel("Rp. " + listOrder.get(listOrder.size() - 1).getPrice());
         payRawVal.setFont(font2);
         payRawVal.setBounds(370, 410, 300, 30);
 
@@ -100,13 +100,13 @@ public class DetailOrder {
         payTaxVal.setBounds(370, 435, 300, 30);
 
         float disc = Controller.getInstance().getPromoValByID(listOrder.get(listOrder.size() - 1).getPromo_id());
-        float result = (listOrder.get(listOrder.size() - 1).getOrder_price() + 2000) * disc;
+        float result = (listOrder.get(listOrder.size() - 1).getPrice() + 2000) * disc;
 
         JLabel payVoucherVal = new JLabel("Rp. " + result);
         payVoucherVal.setFont(font2);
         payVoucherVal.setBounds(370, 460, 300, 30);
 
-        JLabel totalVal = new JLabel("Rp. " + listOrder.get(listOrder.size() - 1).getOrder_final_price());
+        JLabel totalVal = new JLabel("Rp. " + listOrder.get(listOrder.size() - 1).getFinal_Price());
         totalVal.setFont(font4);
         totalVal.setBounds(360, 490, 300, 30);
 

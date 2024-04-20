@@ -80,24 +80,24 @@ public class OrderRiwayat{
             
             indivOrder.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
-            int idOrder = order.getOrder_id();
+            int idOrder = order.getId();
 
-            JLabel nameField = new JLabel("Tujuan: " + order.getOrder_destination());
+            JLabel nameField = new JLabel("Tujuan: " + order.getDestination());
             nameField.setBounds(10, 5, 100, 25);
             nameField.setBorder(null);
             indivOrder.add(nameField);
             
-            JLabel dateField = new JLabel(order.getOrder_date() + "");
+            JLabel dateField = new JLabel(order.getDate() + "");
             dateField.setBounds(353, 5, 70, 20);
             dateField.setBorder(null);
             indivOrder.add(dateField);
             
-            JLabel priceField = new JLabel("Rp. " + order.getOrder_final_price() + "");
+            JLabel priceField = new JLabel("Rp. " + order.getFinal_Price() + "");
             priceField.setBorder(null);
             priceField.setBounds(10, 30, 70, 25);
             indivOrder.add(priceField);
             
-            JLabel status = new JLabel( order.getOrder_status().toString() + "");
+            JLabel status = new JLabel( order.getStatus().toString() + "");
             status.setFont(font4);
             status.setBorder(null);
             status.setBounds(150, 3, 150, 25);

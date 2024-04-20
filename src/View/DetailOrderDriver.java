@@ -38,7 +38,7 @@ public class DetailOrderDriver extends DetailOrder {
         passPhon.setFont(font2);
         passPhon.setBounds(370, 220, 300, 30);
 
-        if (listOrder.get(listOrder.size() - 1).getOrder_status() == OrderStatusEnum.NOW) {
+        if (listOrder.get(listOrder.size() - 1).getStatus() == OrderStatusEnum.NOW) {
             JButton cancel = new JButton("Selesaikan Order");
             cancel.setBounds(30, 310, 420, 30);
             cancel.addActionListener(new ActionListener() {
@@ -55,9 +55,9 @@ public class DetailOrderDriver extends DetailOrder {
                             float currSaldoAdmin = Controller.getInstance().getWallet(1);
                             Controller.getInstance().updateJoPay(1, currSaldoAdmin + 2000);
                             // nambah saldo driver
-                            Controller.getInstance().updateJoPay(listOrder.get(listOrder.size() - 1).getDriver_id(), currSaldoDriver + listOrder.get(listOrder.size() - 1).getOrder_final_price() - 2000);
+                            Controller.getInstance().updateJoPay(listOrder.get(listOrder.size() - 1).getDriver_id(), currSaldoDriver + listOrder.get(listOrder.size() - 1).getFinal_Price() - 2000);
                             // kurangi saldo user
-                            Controller.getInstance().updateJoPay(listOrder.get(listOrder.size() - 1).getCust_id(), currSaldo - listOrder.get(listOrder.size() - 1).getOrder_final_price());
+                            Controller.getInstance().updateJoPay(listOrder.get(listOrder.size() - 1).getCust_id(), currSaldo - listOrder.get(listOrder.size() - 1).getFinal_Price());
                             // kembalikan status driver menjadi AVAILABLE
                             Controller.getInstance().changeToAvailable(id);
                             f.dispose();

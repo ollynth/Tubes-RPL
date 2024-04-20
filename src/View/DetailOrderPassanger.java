@@ -55,7 +55,7 @@ public class DetailOrderPassanger extends DetailOrder {
         driverVName.setFont(font2);
         driverVName.setBounds(30, 265, 300, 30);
 
-        if (listOrder.get(listOrder.size() - 1).getOrder_status() == OrderStatusEnum.NOW) {
+        if (listOrder.get(listOrder.size() - 1).getStatus() == OrderStatusEnum.NOW) {
             JButton cancel = new JButton("Top Up ke Driver");
             cancel.setBounds(30, 310, 420, 30);
             cancel.addActionListener(new ActionListener() {

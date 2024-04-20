@@ -23,11 +23,11 @@ public class DetailOrderAdmin extends DetailOrder {
         intro.setBounds(30, 70, 400, 30);
 
         String message = "";
-        if (listOrder.get(listOrder.size() - 1).getOrder_status() == OrderStatusEnum.FINISHED) {
+        if (listOrder.get(listOrder.size() - 1).getStatus() == OrderStatusEnum.FINISHED) {
             message = "Sudah sampai tujuan.";
-        } else if (listOrder.get(0).getOrder_status() == OrderStatusEnum.CANCEL) {
+        } else if (listOrder.get(0).getStatus() == OrderStatusEnum.CANCEL) {
             message = "Sudah di cancel.";
-        } else if (listOrder.get(0).getOrder_status() == OrderStatusEnum.NOW) {
+        } else if (listOrder.get(0).getStatus() == OrderStatusEnum.NOW) {
             message = "Sedang dalam perjalanan";
         }
 
