@@ -36,10 +36,4 @@ public class Passanger extends User {
         this.listOrder = listOrder;
     }
 
-    public void setUser_pass(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setUser_pass'");
-    }
-
-    
 }
