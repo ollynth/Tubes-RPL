@@ -29,7 +29,7 @@ public class OrderRide {
 
         ArrayList<Passanger> pass = Controller.getInstance().getPassangerByID(id);
 
-        JLabel intro = new JLabel("Halo, " + pass.get(pass.size() - 1).getUser_name() + "!");
+        JLabel intro = new JLabel("Halo, " + pass.get(pass.size() - 1).getName() + "!");
         Font font = new Font("Courier", Font.BOLD, 20);
         JLabel intro2 = new JLabel("Mau kemana kali ini sayy?");
         Font font2 = new Font("Courier", Font.PLAIN, 16);
