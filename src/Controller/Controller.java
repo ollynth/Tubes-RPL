@@ -199,11 +199,11 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Passanger pass = new Passanger();
-                pass.setUser_id(rs.getInt("user_id"));
-                pass.setUser_name(rs.getString("users.user_name"));
-                pass.setUser_pass(rs.getString("users.user_pass"));
+                pass.setID(rs.getInt("user_id"));
+                pass.setName(rs.getString("users.user_name"));
+                pass.setPassword(rs.getString("users.user_pass"));
                 pass.setPhone_number(rs.getString("passangers.passanger_phonNum"));
-                pass.setUser_wallet(rs.getFloat("user_wallet"));
+                pass.setWallet(rs.getFloat("user_wallet"));
 
                 listPass.add(pass);
             }
@@ -248,9 +248,9 @@ public class Controller {
             while (rs.next()) {
                 Driver drivers = new Driver();
                 drivers.setId(rs.getInt("users.user_id"));
-                drivers.setUser_name(rs.getString("users.user_name"));
+                drivers.setName(rs.getString("users.user_name"));
                 drivers.setUser_pass(rs.getString("users.user_pass"));
-                drivers.setDriver_phonNum(rs.getString("drivers.driver_phonNum"));
+                drivers.setPhonNum(rs.getString("drivers.driver_phonNum"));
                 drivers.setVehicle_name(rs.getString("drivers.vehicle_name"));
                 drivers.setVehicle_type(rs.getString("drivers.vehicle_type"));
                 drivers.setVehicle_plate(rs.getString("drivers.vehicle_plate"));
@@ -293,9 +293,9 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Driver drivers = new Driver();
-                drivers.setUser_name(rs.getString("driver_username"));
+                drivers.setName(rs.getString("driver_username"));
                 drivers.setUser_pass(rs.getString("driver_password"));
-                drivers.setDriver_phonNum(rs.getString("driver_phonNum"));
+                drivers.setPhonNum(rs.getString("driver_phonNum"));
                 drivers.setVehicle_name(rs.getString("vehicle_name"));
                 drivers.setVehicle_type(rs.getString("vehicle_type"));
                 drivers.setVehicle_plate(rs.getString("vehicle_plate"));
@@ -435,14 +435,14 @@ public class Controller {
                 orders.setDriver_id(rs.getInt("driver_id"));
                 orders.setPromo_id(rs.getInt("promo_id"));
                 orders.setCust_id(rs.getInt("cust_id"));
-                orders.setOrder_pickup(rs.getString("order_pickup"));
-                orders.setOrder_destination(rs.getString("order_destination"));
-                orders.setOrder_date(rs.getDate("order_date"));
-                orders.setOrder_price(rs.getFloat("order_price"));
-                orders.setOrder_final_price(rs.getFloat("order_final_price"));
-                orders.setOrder_status(getEnum(rs.getString("order_status")));
-                orders.setOrder_vehicle_name(rs.getString("order_vehicle_name"));
-                orders.setOrder_vehicle_plate(rs.getString("order_vehicle_plate"));
+                orders.setPickup(rs.getString("order_pickup"));
+                orders.setDestination(rs.getString("order_destination"));
+                orders.setDate(rs.getDate("order_date"));
+                orders.setPrice(rs.getFloat("order_price"));
+                orders.setFinal_Price(rs.getFloat("order_final_price"));
+                orders.setStatus(getEnum(rs.getString("order_status")));
+                orders.setVehicle_Name(rs.getString("order_vehicle_name"));
+                orders.setVehicle_Plate(rs.getString("order_vehicle_plate"));
                 listOrder.add(orders);
             }
         } catch (SQLException e) {
@@ -480,11 +480,11 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Order orders = new Order();
-                orders.setOrder_id(rs.getInt("order_id"));
-                orders.setOrder_destination(rs.getString("order_destination"));
-                orders.setOrder_date(rs.getDate("order_date"));
-                orders.setOrder_final_price(rs.getFloat("order_final_price"));
-                orders.setOrder_status(getEnum(rs.getString("order_status")));
+                orders.setId(rs.getInt("order_id"));
+                orders.setDestination(rs.getString("order_destination"));
+                orders.setDate(rs.getDate("order_date"));
+                orders.setFinal_Price(rs.getFloat("order_final_price"));
+                orders.setStatus(getEnum(rs.getString("order_status")));
                 listOrder.add(orders);
             }
         } catch (SQLException e) {
@@ -663,9 +663,9 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Promo prm = new Promo();
-                prm.setPromoID(rs.getInt("promo_id"));
-                prm.setPromoCode(rs.getString("promo_code"));
-                prm.setPromoValue(rs.getFloat("promo_value"));
+                prm.setID(rs.getInt("promo_id"));
+                prm.setCode(rs.getString("promo_code"));
+                prm.setValue(rs.getFloat("promo_value"));
                 prm.setExpired(rs.getDate("promo_exp"));
                 listpPromos.add(prm);
             }
@@ -839,11 +839,11 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             User user = new User();
             while (rs.next()) {
-                user.setUser_id(rs.getInt("user_id"));
-                user.setUser_name(rs.getString("user_name"));
-                user.setUser_pass(rs.getString("user_pass"));
-                user.setUser_role(rs.getString("user_role"));
-                user.setUser_wallet(rs.getFloat("user_wallet"));
+                user.setID(rs.getInt("user_id"));
+                user.setName(rs.getString("user_name"));
+                user.setPassword(rs.getString("user_pass"));
+                user.setRole(rs.getString("user_role"));
+                user.setWallet(rs.getFloat("user_wallet"));
             }
             return user;
         } catch (SQLException e) {

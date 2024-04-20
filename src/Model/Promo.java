@@ -3,35 +3,35 @@ package Model;
 import java.sql.Date;
 
 public class Promo {
-    private int promoID;
-    private String promoCode;
-    private float promoValue;
+    private int ID;
+    private String code;
+    private float value;
     private Date expired;
     
-    public Promo(String promoCode, float promoValue, Date expired) {
-        this.promoCode = promoCode;
-        this.promoValue = promoValue;
+    public Promo(String code, float value, Date expired) {
+        this.code = code;
+        this.value = value;
         this.expired = expired;
     }
     public Promo() {
     }
-    public int getPromoID() {
-        return promoID;
+    public int getID() {
+        return ID;
     }
-    public void setPromoID(int promoID) {
-        this.promoID = promoID;
+    public void setID(int ID) {
+        this.ID = ID;
     }
-    public String getPromoCode() {
-        return promoCode;
+    public String getCode() {
+        return code;
     }
-    public void setPromoCode(String promoCode) {
-        this.promoCode = promoCode;
+    public void setCode(String code) {
+        this.code = code;
     }
-    public float getPromoValue() {
-        return promoValue;
+    public float getValue() {
+        return value;
     }
-    public void setPromoValue(float promoValue) {
-        this.promoValue = promoValue;
+    public void setValue(float value) {
+        this.value = value;
     }
     public Date getExpired() {
         return expired;

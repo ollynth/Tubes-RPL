@@ -26,7 +26,7 @@ public class PassangerProfile {
 
         ArrayList<Passanger> pass = Controller.getInstance().getPassangerByID(id);
 
-        JLabel intro = new JLabel("Halo, " + pass.get(pass.size() - 1).getUser_name() + "!");
+        JLabel intro = new JLabel("Halo, " + pass.get(pass.size() - 1).getName() + "!");
         Font font = new Font("Courier", Font.BOLD, 20);
         JLabel intro2 = new JLabel("Mau update apa nih?");
         Font font2 = new Font("Courier", Font.PLAIN, 16);
@@ -44,7 +44,7 @@ public class PassangerProfile {
         Font fontLabel = new Font("Courier", Font.BOLD, 16);
 
         JLabel labelNama = new JLabel("Username ");
-        JTextField textNama = new JTextField(pass.get(pass.size() - 1).getUser_name());
+        JTextField textNama = new JTextField(pass.get(pass.size() - 1).getName());
         labelNama.setFont(fontLabel);
         labelNama.setBounds(30, 160, 100, 30);
         textNama.setBounds(260, 160, 200, 30);
@@ -59,7 +59,7 @@ public class PassangerProfile {
         buttonGanti.setBounds(40, 480, 400, 30);
         buttonGanti.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GantiPassword(id, pass.get(pass.size() - 1).getUser_pass());
+                new GantiPassword(id, pass.get(pass.size() - 1).getPassword());
                 f.dispose();
             }
         });
