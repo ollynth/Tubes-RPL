@@ -52,7 +52,7 @@ public class DriverProfile {
         textNama.setBounds(260, 160, 200, 30);
 
         JLabel labelTelepon = new JLabel("Nomor Telepon ");
-        JTextField textTelepon = new JTextField(driver.getDriver_phonNum());
+        JTextField textTelepon = new JTextField(driver.getPhonNum());
         labelTelepon.setFont(fontLabel);
         labelTelepon.setBounds(30, 190, 200, 30);
         textTelepon.setBounds(260, 190, 200, 30);

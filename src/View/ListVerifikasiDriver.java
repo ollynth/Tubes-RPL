@@ -86,7 +86,7 @@ public class ListVerifikasiDriver {
             username.setBorder(null);
             promoPanel.add(username);
 
-            JLabel phonNum = new JLabel(wait.getDriver_phonNum());
+            JLabel phonNum = new JLabel(wait.getPhonNum());
             phonNum.setBounds(343, 5, 70, 20);
             phonNum.setBorder(null);
             promoPanel.add(phonNum);
@@ -115,7 +115,7 @@ public class ListVerifikasiDriver {
                         boolean succeed = Controller.getInstance().inputUserDataToDB(wait.getUser_name(), wait.getUser_pass(), "Driver");
                         if (succeed) {
                             int id = Controller.getInstance().getIDUser(wait.getUser_name());
-                            boolean succeedDriver = Controller.getInstance().inputDriverDataToDB(id, wait.getDriver_phonNum(), wait.getVehicle_name(), wait.getVehicle_type(), wait.getVehicle_plate());
+                            boolean succeedDriver = Controller.getInstance().inputDriverDataToDB(id, wait.getPhonNum(), wait.getVehicle_name(), wait.getVehicle_type(), wait.getVehicle_plate());
                             boolean succeedDelete = Controller.getInstance().deleteWaitingDriver(wait.getUser_name());
                             if (succeedDriver && succeedDelete) {
                                 JOptionPane.showMessageDialog(f, "Data berhasil diverify");

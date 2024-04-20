@@ -62,7 +62,7 @@ public class DetailOrderAdmin extends DetailOrder {
         ArrayList<Driver> driverCont = Controller.getInstance()
                 .getDriverByID(listOrder.get(listOrder.size() - 1).getDriver_id());
 
-        JLabel driverPhon = new JLabel(driverCont.get(driverCont.size() - 1).getDriver_phonNum());
+        JLabel driverPhon = new JLabel(driverCont.get(driverCont.size() - 1).getPhonNum());
         driverPhon.setFont(font2);
         driverPhon.setBounds(370, 220, 300, 30);
 

@@ -57,8 +57,8 @@ public class TarikDana {
         wallet.setBounds(30, 150, 800, 30);
         wallet.setBackground(null);
         f.add(wallet);
-        String strSaldo = String.valueOf(Controller.getInstance().getWallet(driver.getDriver_id()));
-        if (Controller.getInstance().getWallet(driver.getDriver_id()) > 9999999) {
+        String strSaldo = String.valueOf(Controller.getInstance().getWallet(driver.getId()));
+        if (Controller.getInstance().getWallet(driver.getId()) > 9999999) {
             strSaldo = "9999999+";
         }
         JLabel saldo = new JLabel("Rp.  "  + strSaldo);
@@ -71,7 +71,7 @@ public class TarikDana {
         JButton backButton = new JButton("Kembali");
         backButton.setBounds(10, 10, 85, 30);
         backButton.addActionListener(e -> {
-            new MainMenuDriver(driver.getDriver_id());
+            new MainMenuDriver(driver.getId());
             f.dispose();
         });
         f.add(backButton);
@@ -96,7 +96,7 @@ public class TarikDana {
                 if (nominalTarik < 10000) {
                     JOptionPane.showMessageDialog(f, "Minimal penarikan adalah Rp 10000", "WARNING",
                             JOptionPane.WARNING_MESSAGE);
-                } else if (nominalTarik > Controller.getInstance().getWallet(driver.getDriver_id())) {
+                } else if (nominalTarik > Controller.getInstance().getWallet(driver.getId())) {
                     JOptionPane.showMessageDialog(f, "Saldo anda tidak mencukupi", "WARNING",
                             JOptionPane.WARNING_MESSAGE);
                 } else {
@@ -111,7 +111,7 @@ public class TarikDana {
                             "Ya");
 
                     if (result == JOptionPane.YES_OPTION) {
-                        if (Controller.getInstance().updateJoPay(driver.getDriver_id(), Controller.getInstance().getWallet(driver.getDriver_id()) - nominalTarik)) {
+                        if (Controller.getInstance().updateJoPay(driver.getId(), Controller.getInstance().getWallet(driver.getId()) - nominalTarik)) {
                             JOptionPane.showMessageDialog(f, "Penarikan berhasil dilakukan!", "",
                                     JOptionPane.DEFAULT_OPTION);
                         } else {
@@ -119,7 +119,7 @@ public class TarikDana {
                                     JOptionPane.ERROR_MESSAGE);
                         }
 
-                        new MainMenuDriver(driver.getDriver_id());
+                        new MainMenuDriver(driver.getId());
                         f.dispose();
                     } else {
                         JOptionPane.showMessageDialog(f, "Penarikan saldo telah dibatalkan", "",

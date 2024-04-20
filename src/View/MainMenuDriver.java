@@ -128,7 +128,7 @@ public class MainMenuDriver {
         switchStatus.setBounds(70, 410, 350, 30);
         switchStatus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String state = Controller.getInstance().getDriverStat(drv.getDriver_id());
+                String state = Controller.getInstance().getDriverStat(drv.getId());
                 drv.setStateDriver(state);
                 state = drv.updateState(state);
                 boolean success = Controller.getInstance().updateDriverStatus(id, state);

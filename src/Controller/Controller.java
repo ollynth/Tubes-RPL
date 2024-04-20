@@ -250,7 +250,7 @@ public class Controller {
                 drivers.setId(rs.getInt("users.user_id"));
                 drivers.setUser_name(rs.getString("users.user_name"));
                 drivers.setUser_pass(rs.getString("users.user_pass"));
-                drivers.setDriver_phonNum(rs.getString("drivers.driver_phonNum"));
+                drivers.setPhonNum(rs.getString("drivers.driver_phonNum"));
                 drivers.setVehicle_name(rs.getString("drivers.vehicle_name"));
                 drivers.setVehicle_type(rs.getString("drivers.vehicle_type"));
                 drivers.setVehicle_plate(rs.getString("drivers.vehicle_plate"));
@@ -295,7 +295,7 @@ public class Controller {
                 Driver drivers = new Driver();
                 drivers.setUser_name(rs.getString("driver_username"));
                 drivers.setUser_pass(rs.getString("driver_password"));
-                drivers.setDriver_phonNum(rs.getString("driver_phonNum"));
+                drivers.setPhonNum(rs.getString("driver_phonNum"));
                 drivers.setVehicle_name(rs.getString("vehicle_name"));
                 drivers.setVehicle_type(rs.getString("vehicle_type"));
                 drivers.setVehicle_plate(rs.getString("vehicle_plate"));

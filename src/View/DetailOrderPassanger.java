@@ -36,7 +36,7 @@ public class DetailOrderPassanger extends DetailOrder {
         ArrayList<Driver> driverCont = Controller.getInstance().getDriverByID(listOrder.get(listOrder.size() - 1).getDriver_id());
 
         // get driver's phone number
-        JLabel driverPhon = new JLabel(driverCont.get(driverCont.size() - 1).getDriver_phonNum());
+        JLabel driverPhon = new JLabel(driverCont.get(driverCont.size() - 1).getPhonNum());
         driverPhon.setFont(font2);
         driverPhon.setBounds(370, 220, 300, 30);
 
