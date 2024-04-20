@@ -44,6 +44,14 @@ public class Driver extends User {
     public Driver() {
     }
 
+    // use builder
+    public Driver(Builder builder) {
+        this.phonNum = builder.phonNum;
+        this.vehicle_name = builder.vehicleName;
+        this.vehicle_plate = builder.vehiclePlate;
+        this.vehicle_type = builder.vehicletype;
+    }
+
     public int getId() {
         return id;
     }
@@ -92,6 +100,40 @@ public class Driver extends User {
         this.statusDriver = statusDriver;
     }
 
+    public static class Builder {
+        private String vehicleName;
+        private String vehicletype;
+        private String vehiclePlate;
+        private String phonNum;
+
+        public Builder() {}
+
+        public Builder setVehicleName(String vehicleName) {
+            this.vehicleName = vehicleName;
+            return this;
+        }
+
+        public Builder setVehicleType(String vehicletype) {
+            this.vehicletype = vehicleName;
+            return this;
+        }
+
+        public Builder setVehiclePlate(String vehiclePlate) {
+            this.vehicletype = vehicleName;
+            return this;
+        }
+
+        public Builder setPhonNum(String phonNum) {
+            this.phonNum = phonNum;
+            return this;
+        }
+
+        public Driver build() {
+            Driver driver = new Driver(this);
+            return driver;
+        }
+    }
+    
     @Override
     public String toString() {
         return "Driver [id=" + id + ", phonNum=" + phonNum + ", vehicle_name="

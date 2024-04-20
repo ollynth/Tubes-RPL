@@ -140,6 +140,7 @@ public class Controller {
         }
     }
 
+    // menghitung total order
     public int getOrderCount() {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT COUNT(order_id) FROM orders WHERE order_status = 'FINISHED'";
@@ -172,6 +173,7 @@ public class Controller {
         }
     }
 
+    // update status suatu orderan
     public boolean updateStatusOrder(int idOrder, String state) {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE orders SET order_status = '" + state + "' WHERE order_id = '" + idOrder + "';";
@@ -213,6 +215,7 @@ public class Controller {
         return (listPass);
     }
 
+    // waiting list top up 
     public ArrayList<JopayWaitingList> getWaitingList(int idDriver) {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT * "
@@ -235,6 +238,7 @@ public class Controller {
         return (listWaiting);
     }
 
+    // cari driver berdasarkan ID
     public ArrayList<Driver> getDriverByID(int id) {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT users.user_id, users.user_name, users.user_pass, drivers.driver_phonNum, drivers.vehicle_name, drivers.vehicle_type, drivers.vehicle_plate "
@@ -263,6 +267,7 @@ public class Controller {
         return (listDriver);
     }
 
+    // masukan data driver ke waitinglist untuk diverifikasi sebelum jadi driver resmi
     public boolean inputDriverDataToWaitingList(String username, String password, String phonNum, String namaKendaraan, String tipe, String plat) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO waitinglist (driver_username, driver_password, driver_phonNum, vehicle_name, vehicle_type, vehicle_plate) VALUES (?, ?, ?, ?, ?, ?)";
@@ -283,6 +288,7 @@ public class Controller {
         }
     }
 
+    // mendapatkan data driver yang masih di waitinglist
     public ArrayList<Driver> getWaitingDriver(int id) {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT driver_username, driver_password, driver_phonNum, vehicle_name, vehicle_type, vehicle_plate "
@@ -322,6 +328,7 @@ public class Controller {
         }
     }
 
+    // update data driver
     public boolean updateDataDriverToDB(int idMasuk, String telepon, String vehicleName, String vehiclePlate, String vehicleType) {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE drivers \n"
