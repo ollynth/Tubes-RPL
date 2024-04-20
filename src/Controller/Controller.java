@@ -199,11 +199,11 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Passanger pass = new Passanger();
-                pass.setUser_id(rs.getInt("user_id"));
-                pass.setUser_name(rs.getString("users.user_name"));
-                pass.setUser_pass(rs.getString("users.user_pass"));
+                pass.setID(rs.getInt("user_id"));
+                pass.setName(rs.getString("users.user_name"));
+                pass.setPassword(rs.getString("users.user_pass"));
                 pass.setPhone_number(rs.getString("passangers.passanger_phonNum"));
-                pass.setUser_wallet(rs.getFloat("user_wallet"));
+                pass.setWallet(rs.getFloat("user_wallet"));
 
                 listPass.add(pass);
             }
@@ -248,7 +248,7 @@ public class Controller {
             while (rs.next()) {
                 Driver drivers = new Driver();
                 drivers.setId(rs.getInt("users.user_id"));
-                drivers.setUser_name(rs.getString("users.user_name"));
+                drivers.setName(rs.getString("users.user_name"));
                 drivers.setUser_pass(rs.getString("users.user_pass"));
                 drivers.setPhonNum(rs.getString("drivers.driver_phonNum"));
                 drivers.setVehicle_name(rs.getString("drivers.vehicle_name"));
@@ -293,7 +293,7 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Driver drivers = new Driver();
-                drivers.setUser_name(rs.getString("driver_username"));
+                drivers.setName(rs.getString("driver_username"));
                 drivers.setUser_pass(rs.getString("driver_password"));
                 drivers.setPhonNum(rs.getString("driver_phonNum"));
                 drivers.setVehicle_name(rs.getString("vehicle_name"));
@@ -839,11 +839,11 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             User user = new User();
             while (rs.next()) {
-                user.setUser_id(rs.getInt("user_id"));
-                user.setUser_name(rs.getString("user_name"));
-                user.setUser_pass(rs.getString("user_pass"));
-                user.setUser_role(rs.getString("user_role"));
-                user.setUser_wallet(rs.getFloat("user_wallet"));
+                user.setID(rs.getInt("user_id"));
+                user.setName(rs.getString("user_name"));
+                user.setPassword(rs.getString("user_pass"));
+                user.setRole(rs.getString("user_role"));
+                user.setWallet(rs.getFloat("user_wallet"));
             }
             return user;
         } catch (SQLException e) {

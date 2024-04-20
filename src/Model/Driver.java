@@ -99,4 +99,9 @@ public class Driver extends User {
                 + ", statusDriver=" + statusDriver + "]";
     }
 
+    public void setUser_pass(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setUser_pass'");
+    }
+
 }
