@@ -92,13 +92,13 @@ public class Controller {
         }
     }
 
-    public boolean inputJopayList(int id, int idDriver, float saldo) {
+    public boolean inputJopayList(int idPassanger, int idDriver, float saldo) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO jopaylist (passanger_id, driver_id, nominal) VALUES (?, ?, ?)";
         PreparedStatement stmt;
         try {
             stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setInt(1, id);
+            stmt.setInt(1, idPassanger);
             stmt.setInt(2, idDriver);
             stmt.setFloat(3, saldo);
             stmt.executeUpdate();
