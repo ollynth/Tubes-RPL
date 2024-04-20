@@ -247,7 +247,7 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Driver drivers = new Driver();
-                drivers.setDriver_id(rs.getInt("users.user_id"));
+                drivers.setId(rs.getInt("users.user_id"));
                 drivers.setUser_name(rs.getString("users.user_name"));
                 drivers.setUser_pass(rs.getString("users.user_pass"));
                 drivers.setDriver_phonNum(rs.getString("drivers.driver_phonNum"));
@@ -889,7 +889,7 @@ public class Controller {
             stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
             stmt.setInt(1, custID);
             stmt.setInt(2, promoID);
-            stmt.setInt(3, dr.getDriver_id());
+            stmt.setInt(3, dr.getId());
             stmt.setDate(4, currentDate);
             stmt.setString(5, asal);
             stmt.setString(6, tujuan);
@@ -899,7 +899,7 @@ public class Controller {
             stmt.setString(10, dr.getVehicle_plate());
             stmt.setString(11, "NOW");
 
-            changeDriverStat(dr.getDriver_id());
+            changeDriverStat(dr.getId());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {

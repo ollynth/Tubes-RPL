@@ -75,7 +75,7 @@ public class DetailOrderPassanger extends DetailOrder {
                         if (Controller.getInstance().updateStatusOrder(idOrder, "CANCEL")) {
                             JOptionPane.showMessageDialog(null, "Berhasil dicancel", "Yahhh", JOptionPane.INFORMATION_MESSAGE);
                             // balikin status driver jadi available
-                            Controller.getInstance().changeToAvailable(driverCont.get(driverCont.size() - 1).getDriver_id());
+                            Controller.getInstance().changeToAvailable(driverCont.get(driverCont.size() - 1).getId());
                             f.dispose();
                             new CekOrder(id);
                         } else {

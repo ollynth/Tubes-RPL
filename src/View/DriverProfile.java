@@ -97,7 +97,7 @@ public class DriverProfile {
         buttonGanti.setBounds(40, 480, 400, 30);
         buttonGanti.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GantiPassword(driver.getDriver_id(), driver.getUser_pass());
+                new GantiPassword(driver.getId(), driver.getUser_pass());
                 f.dispose();
             }
         });
@@ -106,8 +106,8 @@ public class DriverProfile {
         buttonSimpan.setBounds(40, 515, 400, 30);
         buttonSimpan.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                boolean succeed = Controller.getInstance().updateUsernameDataDriverToDB(driver.getDriver_id(), textNama.getText());
-                boolean succeed2 = Controller.getInstance().updateDataDriverToDB(driver.getDriver_id(), textTelepon.getText(), textNamaVehicle.getText(), textPlat.getText(), boxPilihVehicle.getSelectedItem().toString());
+                boolean succeed = Controller.getInstance().updateUsernameDataDriverToDB(driver.getId(), textNama.getText());
+                boolean succeed2 = Controller.getInstance().updateDataDriverToDB(driver.getId(), textTelepon.getText(), textNamaVehicle.getText(), textPlat.getText(), boxPilihVehicle.getSelectedItem().toString());
                 if (succeed && succeed2) {
                     JOptionPane.showMessageDialog(f, "Data berhasil disimpan");
                 } else {
@@ -123,7 +123,7 @@ public class DriverProfile {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                new MainMenuDriver(driver.getDriver_id());
+                new MainMenuDriver(driver.getId());
             }
         });
 
