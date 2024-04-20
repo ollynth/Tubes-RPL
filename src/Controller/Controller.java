@@ -663,9 +663,9 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Promo prm = new Promo();
-                prm.setPromoID(rs.getInt("promo_id"));
-                prm.setPromoCode(rs.getString("promo_code"));
-                prm.setPromoValue(rs.getFloat("promo_value"));
+                prm.setID(rs.getInt("promo_id"));
+                prm.setCode(rs.getString("promo_code"));
+                prm.setValue(rs.getFloat("promo_value"));
                 prm.setExpired(rs.getDate("promo_exp"));
                 listpPromos.add(prm);
             }

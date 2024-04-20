@@ -82,9 +82,9 @@ public class SeeAndDeletePromo {
             promoPanel.setLayout(null);
 
             promoPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1, true));
-            int idPromo = prm.getPromoID();
+            int idPromo = prm.getID();
 
-            JLabel promoCode = new JLabel("Kode Promo : " + prm.getPromoCode());
+            JLabel promoCode = new JLabel("Kode Promo : " + prm.getCode());
             promoCode.setBounds(10, 5, 200, 25);
             promoCode.setBorder(null); 
             promoPanel.add(promoCode);
@@ -94,7 +94,7 @@ public class SeeAndDeletePromo {
             promoVaField.setBorder(null);
             promoPanel.add(promoVaField);
 
-            JLabel expField = new JLabel(" Nilai Promo " + prm.getPromoValue());
+            JLabel expField = new JLabel(" Nilai Promo " + prm.getValue());
             expField.setBounds(10, 30, 100, 25);
             expField.setBorder(null);
             promoPanel.add(expField);
