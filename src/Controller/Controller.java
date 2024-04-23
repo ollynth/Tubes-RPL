@@ -39,14 +39,14 @@ public class Controller {
     public boolean inputUserDataToDB(String username, String password, String kategoriUser) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO users (user_name, user_pass, user_role, user_wallet) VALUES (?, ?, ?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            stmt.setString(3, kategoriUser);
-            stmt.setFloat(4, 0);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, kategoriUser);
+            statement.setFloat(4, 0);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,16 +58,16 @@ public class Controller {
     public boolean inputDriverDataToDB(int id, String phonNum, String namaKendaraan, String tipe, String plat) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO drivers (driver_id, driver_phonNum, vehicle_name, vehicle_type, vehicle_plate, driver_status) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setInt(1, id);
-            stmt.setString(2, phonNum);
-            stmt.setString(3, namaKendaraan);
-            stmt.setString(4, tipe);
-            stmt.setString(5, plat);
-            stmt.setString(6, "AVAILABLE");
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.setString(2, phonNum);
+            statement.setString(3, namaKendaraan);
+            statement.setString(4, tipe);
+            statement.setString(5, plat);
+            statement.setString(6, "AVAILABLE");
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,12 +79,12 @@ public class Controller {
     public boolean inputPassangerDataToDB(int id, String phonNum) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO passangers (passanger_id, passanger_phonNum) VALUES (?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setInt(1, id);
-            stmt.setString(2, phonNum);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.setString(2, phonNum);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,13 +95,13 @@ public class Controller {
     public boolean inputJopayList(int idPassanger, int idDriver, float saldo) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO jopaylist (passanger_id, driver_id, nominal) VALUES (?, ?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setInt(1, idPassanger);
-            stmt.setInt(2, idDriver);
-            stmt.setFloat(3, saldo);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setInt(1, idPassanger);
+            statement.setInt(2, idDriver);
+            statement.setFloat(3, saldo);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,10 +113,10 @@ public class Controller {
     public boolean updateUserNameDataPassangerToDB(int idMasuk, String username) {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE users SET user_name = '" + username + "' WHERE user_id = '" + idMasuk + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -129,10 +129,10 @@ public class Controller {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE passangers SET passanger_phonNum = '" + telepon + "' WHERE passanger_id = '" + idMasuk
                 + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -146,8 +146,8 @@ public class Controller {
         String query = "SELECT COUNT(order_id) FROM orders WHERE order_status = 'FINISHED'";
         int result = 0;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 result = (rs.getInt("COUNT(order_id)"));
             }
@@ -162,10 +162,10 @@ public class Controller {
     public boolean updatePasswordDataPassangerToDB(int idMasuk, String pass) {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE users SET user_pass = '" + pass + "' WHERE user_id = '" + idMasuk + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -177,10 +177,10 @@ public class Controller {
     public boolean updateStatusOrder(int idOrder, String state) {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE orders SET order_status = '" + state + "' WHERE order_id = '" + idOrder + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -197,8 +197,8 @@ public class Controller {
                 + "WHERE passangers.passanger_id = '" + id + "'";
         ArrayList<Passanger> listPass = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Passanger pass = new Passanger();
                 pass.setID(rs.getInt("user_id"));
@@ -222,8 +222,8 @@ public class Controller {
                 + "FROM jopaylist WHERE driver_id = '" + idDriver + "'";
         ArrayList<JopayWaitingList> listWaiting = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 JopayWaitingList wait = new JopayWaitingList();
                 wait.setJopaylist_id(rs.getInt("jopaylist_id"));
@@ -247,8 +247,8 @@ public class Controller {
                 + "WHERE drivers.driver_id = '" + id + "'";
         ArrayList<Driver> listDriver = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Driver drivers = new Driver();
                 drivers.setId(rs.getInt("users.user_id"));
@@ -271,16 +271,16 @@ public class Controller {
     public boolean inputDriverDataToWaitingList(String username, String password, String phonNum, String namaKendaraan, String tipe, String plat) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO waitinglist (driver_username, driver_password, driver_phonNum, vehicle_name, vehicle_type, vehicle_plate) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            stmt.setString(3, phonNum);
-            stmt.setString(4, namaKendaraan);
-            stmt.setString(5, tipe);
-            stmt.setString(6, plat);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, phonNum);
+            statement.setString(4, namaKendaraan);
+            statement.setString(5, tipe);
+            statement.setString(6, plat);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -295,8 +295,8 @@ public class Controller {
                 + "FROM waitinglist ";
         ArrayList<Driver> listDriver = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Driver drivers = new Driver();
                 drivers.setName(rs.getString("driver_username"));
@@ -317,10 +317,10 @@ public class Controller {
     public boolean updateUsernameDataDriverToDB(int idMasuk, String username) {
         DatabaseHandler.getInstance().connect();
         String query = "UPDATE users SET user_name = '" + username + "' WHERE user_id = '" + idMasuk + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -337,10 +337,10 @@ public class Controller {
                 + "vehicle_plate = '" + vehiclePlate + "', \n"
                 + "vehicle_type = '" + vehicleType + "' \n"
                 + "WHERE driver_id = '" + idMasuk + "'";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -353,8 +353,8 @@ public class Controller {
         String query = "DELETE FROM waitinglist WHERE driver_username = '" + username + "'";
         boolean exists = false;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            stmt.executeUpdate(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            statement.executeUpdate(query);
             exists = true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -367,8 +367,8 @@ public class Controller {
         String query = "DELETE FROM jopaylist WHERE jopaylist_id = '" + idJopayList + "'";
         boolean exists = false;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            stmt.executeUpdate(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            statement.executeUpdate(query);
             exists = true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -382,8 +382,8 @@ public class Controller {
         String query = "SELECT SUM(order_final_price) FROM orders WHERE driver_id = '" + idDriver + "' AND order_status = 'FINISHED'";
         double total = 0;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 total = (rs.getDouble("SUM(order_final_price)"));
             }
@@ -398,8 +398,8 @@ public class Controller {
         String query = "SELECT COUNT(driver_id) FROM orders WHERE driver_id = '" + idDriver + "' AND order_status = 'FINISHED'";
         int result = 0;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 result = (rs.getInt("COUNT(driver_id)"));
             }
@@ -435,8 +435,8 @@ public class Controller {
                 + "FROM orders WHERE order_id = '" + idOrder + "'";
         ArrayList<Order> listOrder = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Order orders = new Order();
                 orders.setDriver_id(rs.getInt("driver_id"));
@@ -464,8 +464,8 @@ public class Controller {
                 + "FROM orders WHERE order_id = '" + idOrder + "'";
         String listOrder = "";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Order orders = new Order();
                 listOrder = (rs.getString("order_date"));
@@ -483,8 +483,8 @@ public class Controller {
                 + "FROM orders WHERE (cust_id = '" + id + "' OR driver_id = '" + id + "') AND order_status = 'NOW'";
         ArrayList<Order> listOrder = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Order orders = new Order();
                 orders.setId(rs.getInt("order_id"));
@@ -506,8 +506,8 @@ public class Controller {
                 + "FROM orders WHERE (cust_id = '" + id + "' OR driver_id = '" + id + "') AND order_status <> 'NOW'";
         ArrayList<Order> listOrder = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Order orders = new Order();
                 orders.setId(rs.getInt("order_id"));
@@ -529,8 +529,8 @@ public class Controller {
         String query = "SELECT * FROM users WHERE user_name = '" + username + "'";
         boolean exists = false;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 exists = true;
             }
@@ -545,8 +545,8 @@ public class Controller {
         String query = "SELECT * FROM orders WHERE order_id = '" + idOrder + "'";
         boolean exists = false;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 exists = true;
             }
@@ -562,8 +562,8 @@ public class Controller {
         String query = "SELECT * FROM users WHERE user_name = '" + username + "' AND user_pass = '" + password + "'";
         boolean exists = false;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 exists = true;
             }
@@ -578,8 +578,8 @@ public class Controller {
         String query = "SELECT user_id FROM users WHERE user_name = '" + username + "'";
         int id = 0;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 id = (rs.getInt("user_id"));
             }
@@ -595,8 +595,8 @@ public class Controller {
         String query = "SELECT user_name FROM users WHERE user_id = '" + id + "'";
         String username = "";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 username = (rs.getString("user_name"));
             }
@@ -612,8 +612,8 @@ public class Controller {
         String query = "SELECT user_role FROM users WHERE user_id = '" + userID + "'";
         String roles = "";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 roles = (rs.getString("user_role"));
             }
@@ -630,8 +630,8 @@ public class Controller {
         String query = "SELECT user_wallet FROM users WHERE user_id = '" + id + "'";
         float walletResult = 0;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 walletResult = (rs.getFloat("user_wallet"));
             }
@@ -646,13 +646,13 @@ public class Controller {
     public boolean addNewPromo(String promoCode, float promoValue, Date expired) {
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO promo (promo_code, promo_exp, promo_value) VALUES (?, ?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setString(1, promoCode);
-            stmt.setDate(2, (java.sql.Date) expired);
-            stmt.setFloat(3, promoValue);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setString(1, promoCode);
+            statement.setDate(2, (java.sql.Date) expired);
+            statement.setFloat(3, promoValue);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -666,8 +666,8 @@ public class Controller {
         String query = "SELECT * FROM promo ORDER BY promo_exp"; // biar nampilin dari promo yang terbaru
         ArrayList<Promo> listpPromos = new ArrayList<>();
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Promo prm = new Promo();
                 prm.setID(rs.getInt("promo_id"));
@@ -689,7 +689,7 @@ public class Controller {
         try {
             DatabaseHandler.getInstance().connect();
             String query = "SELECT promo_exp FROM promo WHERE promo_id = '" + id + "'";
-            try (Statement stmt = DatabaseHandler.getInstance().con.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            try (Statement statement = DatabaseHandler.getInstance().con.createStatement(); ResultSet rs = statement.executeQuery(query)) {
 
                 if (rs.next()) {
                     // Move the date retrieval inside the 'if' block
@@ -715,8 +715,8 @@ public class Controller {
 
         String query = "DELETE FROM promo WHERE promo_id='" + id + "'";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            stmt.executeUpdate(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            statement.executeUpdate(query);
             return (true);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -730,8 +730,8 @@ public class Controller {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT promo_id FROM promo WHERE promo_code = '" + inpCode + "'";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 Id = (rs.getInt("promo_id"));
             }
@@ -747,8 +747,8 @@ public class Controller {
         String query = "SELECT * FROM promo WHERE promo_code = '" + inpCode + "'";
         boolean found = false;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 found = true;
             }
@@ -766,8 +766,8 @@ public class Controller {
 
         String query = "UPDATE users SET user_wallet = " + saldo + "WHERE user_id = " + id + ";";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            stmt.executeUpdate(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            statement.executeUpdate(query);
             return (true);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -809,8 +809,8 @@ public class Controller {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT promo_value FROM promo WHERE promo_code = '" + inpCode + "'";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 val = (rs.getFloat("promo_value"));
             }
@@ -826,8 +826,8 @@ public class Controller {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT promo_value FROM promo WHERE promo_id = '" + idPromo + "'";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 val = (rs.getFloat("promo_value"));
             }
@@ -842,8 +842,8 @@ public class Controller {
         DatabaseHandler.getInstance().connect();
         String query = "SELECT * FROM users WHERE user_id = " + id;
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             User user = new User();
             while (rs.next()) {
                 user.setID(rs.getInt("user_id"));
@@ -869,8 +869,8 @@ public class Controller {
         + "WHERE d.vehicle_type = '" + jenisKendaraan + "' AND d.driver_status = 'AVAILABLE';";
 
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
             if (rs.next()) {
                 int dId = rs.getInt("d.driver_id");
                 String dName = rs.getString("u.user_name");
@@ -890,24 +890,24 @@ public class Controller {
 
         DatabaseHandler.getInstance().connect();
         String query = "INSERT INTO orders (cust_id, promo_id, driver_id, order_date, order_pickup, order_destination, order_price, order_final_price, order_vehicle_name, order_vehicle_plate, order_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt;
+        PreparedStatement statement;
         try {
             java.sql.Date currentDate = getCurrentDate();
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.setInt(1, custID);
-            stmt.setInt(2, promoID);
-            stmt.setInt(3, dr.getId());
-            stmt.setDate(4, currentDate);
-            stmt.setString(5, asal);
-            stmt.setString(6, tujuan);
-            stmt.setFloat(7, harga);
-            stmt.setFloat(8, hargaAkhir);
-            stmt.setString(9, dr.getVehicle_name());
-            stmt.setString(10, dr.getVehicle_plate());
-            stmt.setString(11, "NOW");
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.setInt(1, custID);
+            statement.setInt(2, promoID);
+            statement.setInt(3, dr.getId());
+            statement.setDate(4, currentDate);
+            statement.setString(5, asal);
+            statement.setString(6, tujuan);
+            statement.setFloat(7, harga);
+            statement.setFloat(8, hargaAkhir);
+            statement.setString(9, dr.getVehicle_name());
+            statement.setString(10, dr.getVehicle_plate());
+            statement.setString(11, "NOW");
 
             changeDriverStat(dr.getId());
-            stmt.executeUpdate();
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -931,11 +931,11 @@ public class Controller {
                 "SET driver_status = 'BOOKED'\r\n"
                 + //
                 "WHERE driver_id = '" + drvID + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
 
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -951,11 +951,11 @@ public class Controller {
                 "SET driver_status = 'AVAILABLE'\r\n"
                 + //
                 "WHERE driver_id = '" + drvID + "';";
-        PreparedStatement stmt;
+        PreparedStatement statement;
 
         try {
-            stmt = DatabaseHandler.getInstance().con.prepareStatement(query);
-            stmt.executeUpdate();
+            statement = DatabaseHandler.getInstance().con.prepareStatement(query);
+            statement.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -970,8 +970,8 @@ public class Controller {
         DatabaseHandler.getInstance().connect();
         String statsQuery = "SELECT driver_status FROM drivers WHERE driver_id = '" + driverID + "';";
         try {
-            Statement stmt = DatabaseHandler.getInstance().con.createStatement();
-            ResultSet rs = stmt.executeQuery(statsQuery);
+            Statement statement = DatabaseHandler.getInstance().con.createStatement();
+            ResultSet rs = statement.executeQuery(statsQuery);
             while (rs.next()) {
                 stat = rs.getString("driver_status");
             }
